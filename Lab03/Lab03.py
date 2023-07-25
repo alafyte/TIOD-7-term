@@ -1,12 +1,12 @@
-import sklearn
-import mglearn
+import warnings
 import matplotlib.pyplot as plt
-import matplotlib
+import mglearn
 import numpy as np
-from sklearn.datasets import load_breast_cancer
+from sklearn.datasets import load_breast_cancer, load_boston
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neighbors import KNeighborsRegressor
+warnings.filterwarnings("ignore", category=FutureWarning)
 
 # График набора данных forge (для двухклассовой классификации)
 X, y = mglearn.datasets.make_forge()
@@ -34,10 +34,10 @@ print("Количество примеров для каждого класса:
     {n: v for n, v in zip(cancer.target_names, np.bincount(cancer.target))}))
 
 # Набор данных Boston Housing
-# boston = load_boston()
-# print("форма массива data для набора boston: {}".format(boston.data.shape))
-# X, y = mglearn.datasets.load_extended_boston()
-# print("форма массива X: {}".format(X.shape))
+boston = load_boston()
+print("форма массива data для набора boston: {}".format(boston.data.shape))
+X, y = mglearn.datasets.load_extended_boston()
+print("форма массива X: {}".format(X.shape))
 
 
 # Классификация с помощью алгоритма k-ближайших соседей
